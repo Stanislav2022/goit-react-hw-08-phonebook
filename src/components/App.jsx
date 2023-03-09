@@ -1,5 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const TasksPage = lazy(() => import('../pages/Contacts'));
 
 export const App = () => {
   return isRefreshing ? (
