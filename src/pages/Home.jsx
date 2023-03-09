@@ -12,7 +12,7 @@ const styles = {
   },
 };
 
-export default function Home() {
+export const Home = () => {
   return (
     <div style={styles.container}>
       <h1 style={styles.title}>
