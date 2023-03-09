@@ -1,19 +1,19 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// const isDuplicate = ({ name }, contacts) => {
-//   const NormalizedName = name.toLowerCase();
-//   const result = contacts.items.find(item => {
-//     return NormalizedName === item.name.toLowerCase();
-//   });
-//   return Boolean(result);
-// };
+const isDuplicate = ({ name }, contacts) => {
+  const NormalizedName = name.toLowerCase();
+  const result = contacts.items.find(item => {
+    return NormalizedName === item.name.toLowerCase();
+  });
+  return Boolean(result);
+};
 
 export const fetchContacts = createAsyncThunk(
   'contacts/fetch',
   async (_, thunkApi) => {
     try {
-      const res = await axios.get();
+      const res = await axios.get('/contacts');
       console.log(res);
       return res.data;
     } catch (error) {
@@ -22,36 +22,36 @@ export const fetchContacts = createAsyncThunk(
   }
 );
 
-// export const addContact = createAsyncThunk(
-//   'contacts/add',
-//   async (data, { rejectWithValue }) => {
-//     try {
-//       const result = await api.addContact(data);
-//       return result;
-//     } catch (error) {
-//       return rejectWithValue(error);
-//     }
-//   },
+export const addContact = createAsyncThunk(
+  'contacts/add',
+  async (data, { rejectWithValue }) => {
+    try {
+      const result = await axios.post('/contacts', { data });
+      return result;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
 
-//   {
-//     condition: (data, { getState }) => {
-//       const { contacts } = getState();
-//     //   //   if (isDuplicate(data, contacts)) {
-//     //   //     alert(`${data.name} - is already in contacts`);
-//     //   //     return false;
-//     //   //   }
-//     // },
-//   }
-// );
+  {
+    condition: (data, { getState }) => {
+      const { contacts } = getState();
+      if (isDuplicate(data, contacts)) {
+        alert(`${data.name} - is already in contacts`);
+        return false;
+      }
+    },
+  }
+);
 
-// export const deleteContact = createAsyncThunk(
-//   'contacts/remove',
-//   async (id, { rejectWithValue }) => {
-//     try {
-//       await api.deleteContact(id);
-//       return id;
-//     } catch (error) {
-//       return rejectWithValue(id);
-//     }
-//   }
-// );
+export const deleteContact = createAsyncThunk(
+  'contacts/remove',
+  async (id, { rejectWithValue }) => {
+    try {
+      await axios.delete(`/contacts/${id}`);
+      return id;
+    } catch (error) {
+      return rejectWithValue(id);
+    }
+  }
+);
