@@ -7,7 +7,7 @@ import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/auth-operations';
 import { useAuth } from '../hooks/useAuth';
 
-const RegisterPage = lazy(() => import("../pages/Register"));
+const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import("../pages/Login"));
 const ContactsPage = lazy(() => import("../pages/Contacts"));
 const NotFoundPage = lazy(() => import('../pages/NotFound'))
@@ -27,12 +27,11 @@ export const App = () => {
     <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          </Route>
-          <Route path="register" element={<RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />}/>
-          <Route path="login" element={<RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />} />
-          <Route path="contacts" element={<PrivateRoute redirectTo="/login" component={<ContactsPage />} />} />
+          <Route path="/register" element={<RestrictedRoute redirectTo="/contacts" component={<RegisterPage />} />} />
+          <Route path="/login" element={<RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />} />
+          <Route path="/contacts" element={<PrivateRoute redirectTo="/login" component={<ContactsPage />} />} />
           <Route path="*" element={<NotFoundPage />} />
-      
+             </Route>   
     </Routes>
   );
 
