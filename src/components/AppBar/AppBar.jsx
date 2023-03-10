@@ -9,7 +9,6 @@ export const AppBar = () => {
 
   return (
     <header>
-      console.log(state);
       <Navigation />
       {isLoggedIn ? <UserMenu /> : <AuthNav />}
     </header>
