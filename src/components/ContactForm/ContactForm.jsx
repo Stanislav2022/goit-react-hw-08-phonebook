@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/contacts-operation';
-
+import { InitialFocus } from './BasicUsage';
 
 
 export const ContactForm = () => {
@@ -15,6 +15,7 @@ export const ContactForm = () => {
 
     return (
       <>
+        <InitialFocus/>
         <form onSubmit={handleSubmit}>
           <label>
             Name
