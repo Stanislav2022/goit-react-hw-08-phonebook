@@ -10,12 +10,10 @@ export const AppBar = () => {
 
   return (
       <Box  boxShadow='dark-lg' rounded='md' bg='white' >
-
-  
-    <header className={css.header}>
-      <Navigation />
-      {isLoggedIn ? <UserMenu /> : <AuthNav />}
-      </header>
+        <header className={css.header}>
+          <Navigation />
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
+        </header>
       </Box>
   );
 };

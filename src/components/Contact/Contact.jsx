@@ -10,7 +10,7 @@ export const Contact = ({ id, name, number}) => {
   return (
     <>
     <Flex>
-  <Avatar />
+  <Avatar bg='teal.500' name={name} src='https://bit.ly/broken-link'/>
   <Box ml='3'>
     <Text fontWeight='bold'>
       {name}
