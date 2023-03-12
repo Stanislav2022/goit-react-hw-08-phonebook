@@ -6,6 +6,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/auth-operations';
 import { useAuth } from '../hooks/useAuth';
+import { Box } from "@chakra-ui/react"
 
 const RegisterPage = lazy(() => import('../pages/Register'));
 const LoginPage = lazy(() => import("../pages/Login"));
@@ -23,7 +24,7 @@ export const App = () => {
 
   return isRefreshing ? (
     <b>Refreshing user...</b>
-  ) : (
+  ) : (<>
     <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
@@ -33,6 +34,8 @@ export const App = () => {
           <Route path="*" element={<NotFoundPage />} />
              </Route>   
     </Routes>
+      <Box pos="fixed" w="100%" zIndex={-1} top="0" left="0" h="100%" bgGradient="linear(to-t, yellow.200, blue.500)" />
+      </>
   );
 
 };
