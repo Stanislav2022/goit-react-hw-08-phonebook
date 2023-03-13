@@ -33,18 +33,18 @@ export const ContactForm = () => {
         >
           <ModalOverlay />
           <ModalContent p={6}>
-            <form onSubmit={handleSubmit}>
-            <label className={css.contact__input}>
+            <form onSubmit={handleSubmit} className={css.contact__input}  >
+            <label>
                 Name
                 <Input placeholder='Name' type="text" name="name" pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$" title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan" />
             </label>
-            <label className={css.contact__input}>
+            <label>
                 Phone
                 <Input placeholder='Phone number' type="tel" name="number" pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}" title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               />
             </label>
-            <Button  type="submit" colorScheme='blue'>Save</Button>
-            <Button onClick={onClose} colorScheme='red'>Cancel</Button>
+            <Button  type="submit">Save</Button>
+            <Button onClick={onClose}>Cancel</Button>
             </form>
           </ModalContent>
         </Modal>
