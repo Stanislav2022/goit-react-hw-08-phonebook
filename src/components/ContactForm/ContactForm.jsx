@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/contacts/contacts-operation';
 import { Modal, ModalOverlay, ModalContent, Button, useDisclosure, Input, Flex,FormLabel, FormControl } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons';
-import css from './ContactForm.module.css';
+
 
 
 export const ContactForm = () => {
@@ -32,7 +32,7 @@ export const ContactForm = () => {
         >
           <ModalOverlay />
           <ModalContent p='3'>
-            <form onSubmit={handleSubmit} className={css.contact__input}  >
+            <form onSubmit={handleSubmit}>
                 <FormControl pb='3'>
                 <FormLabel>Name</FormLabel>
                   <Input placeholder='Name' type="text" name="name" pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$" title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan" />
