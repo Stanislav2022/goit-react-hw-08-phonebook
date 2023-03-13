@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/contacts/contacts-operation';
-import { Flex, Box, Text, Avatar, Button } from '@chakra-ui/react';
+import { Flex, Box, Text, Avatar, IconButton } from '@chakra-ui/react';
+import { DeleteIcon } from '@chakra-ui/icons'
 
 
 export const Contact = ({ id, name, number}) => {
@@ -9,18 +10,14 @@ export const Contact = ({ id, name, number}) => {
 
   return (
     <>
-    <Flex>
-  <Avatar bg='teal.500' name={name} src='https://bit.ly/broken-link'/>
-  <Box ml='3'>
-    <Text fontWeight='bold'>
-      {name}
-    </Text>
-    <Text fontSize='sm'>{number}</Text>
+    <Flex p='1' justify='flex-start'>
+      <Avatar name={name} src='https://bit.ly/broken-link'/>
+      <Box ml='3' pr='3'>
+        <Text fontWeight='bold'>{name}</Text>
+        <Text fontSize='sm'>{number}</Text>
         </Box>
-              <Button ml='1' p='1' type="button" onClick={handleDelete}>
-        Delete
-      </Button>
-</Flex>
+      <IconButton ml='auto' onClick={handleDelete} aria-label='Search database' icon={<DeleteIcon />} />
+    </Flex>
     </>
   );
 };

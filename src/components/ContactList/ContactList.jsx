@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { Contact } from '../Contact/Contact';
 import { getContacts } from 'redux/contacts/contacts-selector';
 import { getFilter } from 'redux/filter/filter-selector';
+import { Flex } from '@chakra-ui/react';
 
 
 export const ContactList = () => {
@@ -26,12 +27,14 @@ export const ContactList = () => {
 
 
   return (
-    <ul >
-      {filterContacts.map(({ id, name, number }) => (
-        <li key={id}>
-          <Contact id={id} name={name} number={number} />
-        </li>
-      ))}
-    </ul>
+    <Flex p='8' align="center" justify="center">
+      <ul >
+        {filterContacts.map(({ id, name, number }) => (
+          <li key={id}>
+            <Contact id={id} name={name} number={number} />
+          </li>
+        ))}
+      </ul>
+    </Flex>
   );
 };

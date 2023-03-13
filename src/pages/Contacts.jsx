@@ -9,7 +9,6 @@ import { Filter } from 'components/Filter/Filter';
 
 export default function Contacts() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(getLoading);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -22,7 +21,6 @@ export default function Contacts() {
       </Helmet>
       <ContactForm />
       <Filter/>
-      <div>{isLoading && 'Request in progress...'}</div>
       <ContactList />
     </>
   );
