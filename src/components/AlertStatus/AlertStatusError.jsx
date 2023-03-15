@@ -1,4 +1,4 @@
-import { Wrap, useToast } from "@chakra-ui/react"
+import { Alert, AlertIcon } from "@chakra-ui/react"
 
 export const AlertStatusError = () => {
 

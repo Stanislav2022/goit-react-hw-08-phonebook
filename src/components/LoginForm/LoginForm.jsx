@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/auth-operations';
 import { useAuth } from '../../hooks/useAuth';
 import { Button, Input, Flex, FormLabel, FormControl } from '@chakra-ui/react'
-import { ToastStatusError } from 'components/ToastStatus/ToastStatusError';
+import { AlertStatusError } from 'components/AlertStatus/AlertStatusError';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
@@ -36,7 +36,7 @@ export const LoginForm = () => {
       </FormControl>
 
         <Button type="submit">Log In</Button>
-       {error ?? <ToastStatusError/>} 
+       {error ?? <AlertStatusError/>} 
       </form>
       </Flex>
   );
