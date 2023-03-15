@@ -2,11 +2,14 @@ import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/auth-operations';
 import { useAuth } from '../../hooks/useAuth';
 import { Button, Input, Flex, FormLabel, FormControl } from '@chakra-ui/react'
-import { AlertStatusError } from 'components/AlertStatus/AlertStatusError';
+import AlertStatusError from 'components/AlertStatus/AlertStatusError';
+import { useToast } from "@chakra-ui/react"
+import { useEffect } from 'react';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const { isLoading, error } = useAuth();
+  const toast = useToast()
 
 
   const handleSubmit = e => {
@@ -19,11 +22,23 @@ export const LoginForm = () => {
       })
     );
     form.reset();
-    console.log(error);
   };
 
+
+  useEffect(() => {
+    if (error && isLoading) {
+      toast({
+              title: 'Error.',
+              description: "Check the correctness of the entered data.",
+              status: 'error',
+              duration: 4000,
+              isClosable: true,
+            })
+    }
+        }, [error]);
+
   return (
-      <Flex p='8' justify='center'>
+    <Flex p='8' justify='center' direction='column' align='center'>
     <form onSubmit={handleSubmit} >
       <FormControl pb='3'>
           <FormLabel>Email</FormLabel>
@@ -36,7 +51,6 @@ export const LoginForm = () => {
       </FormControl>
 
         <Button type="submit">Log In</Button>
-       {error ?? <AlertStatusError/>} 
       </form>
       </Flex>
   );
