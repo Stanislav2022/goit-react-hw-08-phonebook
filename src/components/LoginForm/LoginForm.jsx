@@ -1,9 +1,12 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/auth-operations';
+import { useAuth } from '../../hooks/useAuth';
 import { Button, Input, Flex,FormLabel, FormControl } from '@chakra-ui/react'
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+  const { isLoading, error } = useAuth();
+
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -15,6 +18,7 @@ export const LoginForm = () => {
       })
     );
     form.reset();
+    console.log(error);
   };
 
   return (

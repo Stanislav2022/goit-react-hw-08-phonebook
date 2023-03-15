@@ -1,14 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// const isDuplicate = ({ name }, contacts) => {
-//   const NormalizedName = name.toLowerCase();
-//   const result = contacts.items.find(item => {
-//     return NormalizedName === item.name.toLowerCase();
-//   });
-//   return Boolean(result);
-// };
-
 export const fetchContacts = createAsyncThunk(
   'contacts/fetch',
   async (_, thunkApi) => {
@@ -31,16 +23,6 @@ export const addContact = createAsyncThunk(
       return rejectWithValue(error.message);
     }
   }
-
-  // {
-  //   condition: (data, { getState }) => {
-  //     const { contacts } = getState();
-  //     if (isDuplicate(data, contacts)) {
-  //       alert(`${data.name} - is already in contacts`);
-  //       return false;
-  //     }
-  //   },
-  // }
 );
 
 export const deleteContact = createAsyncThunk(
