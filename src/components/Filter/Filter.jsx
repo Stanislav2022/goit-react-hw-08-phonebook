@@ -4,9 +4,6 @@ import { setFilter } from 'redux/filter/filter-slice';
 import { InputGroup, InputLeftElement, Input, Flex } from '@chakra-ui/react';
 import { Search2Icon } from '@chakra-ui/icons';
 
-
-
-
 export const Filter = () => {
     const dispatch = useDispatch();
     const filter = useSelector(getFilter);

@@ -23,7 +23,6 @@ const authSlice = createSlice({
         state.token = action.payload.token;
         state.isLoading = false;
         state.isLoggedIn = true;
-        state.error = null;
       })
       .addCase(register.rejected, (state, action) => {
         state.isLoading = false;
@@ -50,6 +49,7 @@ const authSlice = createSlice({
       })
       .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
+        state.error = null;
       })
       .addCase(refreshUser.fulfilled, (state, action) => {
         state.user = action.payload;

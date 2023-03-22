@@ -1,15 +1,15 @@
 import { NavLink } from 'react-router-dom';
-import css from './AuthNav.module.css';
+import { Flex, Text } from '@chakra-ui/react';
 
 export const AuthNav = () => {
   return (
-    <div>
-      <NavLink className={css.link} to="/register">
-        Register
+    <Flex>
+      <NavLink  to="/register">
+       <Text variant = 'nav' >Register</Text> 
       </NavLink>
-      <NavLink className={css.link} to="/login">
-        Log In
+      <NavLink  to="/login">
+        <Text >Log In</Text>
       </NavLink>
-    </div>
+    </Flex>
   );
 };

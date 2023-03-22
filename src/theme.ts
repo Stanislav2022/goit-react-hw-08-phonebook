@@ -1,14 +1,11 @@
 import { extendTheme } from '@chakra-ui/react'
-import type { StyleFunctionProps } from '@chakra-ui/styled-system'
 
 const theme = extendTheme({
   components: {
     Button: {
-      // 1. We can update the base styles
       baseStyle: {
-        fontWeight: 'bold', // Normally, it is "semibold"
+        fontWeight: 'bold', 
       },
-      // 2. We can add a new button size or extend existing
       sizes: {
         xl: {
           h: '56px',
@@ -16,29 +13,47 @@ const theme = extendTheme({
           px: '32px',
         },
       },
-      // 3. We can add a new visual variant
       variants: {
-        'with-shadow': {
-          bg: 'red.400',
-          boxShadow: '0 0 2px 2px #efdfde',
-        },
-        // 4. We can override existing variants
-        solid: (props: StyleFunctionProps) => ({
-          bg: props.colorMode === 'dark' ? 'red.300' : 'red.500',
-        }),
-        // 5. We can add responsive variants
         sm: {
           bg: 'teal.500',
           fontSize: 'md',
+          _hover:{ bg: 'teal.400' },
         },
       },
-      // 6. We can overwrite defaultProps
       defaultProps: {
-        size: 'lg', // default is md
-        variant: 'sm', // default is solid
-        colorScheme: 'green', // default is gray
+        size: 'md', 
+        variant: 'sm', 
       },
     },
+    Text: {
+      baseStyle: {
+        fontWeight: 'bolder', 
+        color: 'gray.800',
+        pr: '8px',
+        fontSize: 'lg',
+      },
+      variants: { 
+        sm: {
+          fontWeight: 'normal' ,
+          fontSize: 'sm',
+        },
+        nav: {
+          pr: '12px',
+        },
+      },
+    },
+    Spinner: {
+      baseStyle: {
+        thickness: '5px',
+        speed:'0.65s',
+        emptyColor:'gray.200',
+        color:'teal.500',
+      },
+      defaultProps: {
+        size: 'xl', 
+      },
+
+    }
   },
 })
 

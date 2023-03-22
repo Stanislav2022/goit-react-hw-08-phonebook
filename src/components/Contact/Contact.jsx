@@ -8,13 +8,18 @@ export const Contact = ({ id, name, number}) => {
   const dispatch = useDispatch();
   const handleDelete = () => dispatch(deleteContact(id));
 
+  let slicedName = name.slice(0,15);
+  if (slicedName.length < name.length) {
+   slicedName += '...';
+   }
+
   return (
     <>
-    <Flex p='1' justify='flex-start'>
+    <Flex p='1' justify='flex-start' w='300px'>
       <Avatar name={name} src='https://bit.ly/broken-link'/>
-      <Box ml='3' pr='3'>
-        <Text fontWeight='bold'>{name}</Text>
-        <Text fontSize='sm'>{number}</Text>
+      <Box pl='3' pr='3'>
+        <Text >{slicedName}</Text>
+        <Text variant = 'sm' >{number}</Text>
         </Box>
       <IconButton ml='auto' onClick={handleDelete} aria-label='Search database' icon={<DeleteIcon />} />
     </Flex>

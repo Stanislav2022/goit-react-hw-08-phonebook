@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
 import { logOut } from 'redux/auth/auth-operations';
 import { useAuth } from '../../hooks/useAuth';
-import css from './UserMenu.module.css';
-import { Flex } from '@chakra-ui/react';
+import { Flex, Text, Button} from '@chakra-ui/react';
+
 
 
 export const UserMenu = () => {
@@ -11,10 +11,10 @@ export const UserMenu = () => {
 
   return (
     <Flex align = " center " justify = " center ">
-      <h2 >Welcome, {user.name}</h2>
-      <button className={css.link} type="button" onClick={() => dispatch(logOut())}>
+      <Text >Welcome, {user.name}</Text >
+      <Button  type="button" onClick={() => dispatch(logOut())}>
         Logout
-      </button>
+      </Button>
     </Flex>
   );
 };

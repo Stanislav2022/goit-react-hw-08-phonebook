@@ -1,15 +1,32 @@
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/auth-operations';
 import { useAuth } from '../../hooks/useAuth';
-import { Button, Input, Flex, FormLabel, FormControl } from '@chakra-ui/react'
-import AlertStatusError from 'components/AlertStatus/AlertStatusError';
-import { useToast } from "@chakra-ui/react"
-import { useEffect } from 'react';
+import { Button, Input, Flex, FormLabel, FormControl, useToast, Spinner } from '@chakra-ui/react'
+import { useEffect, useRef } from 'react';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const { isLoading, error } = useAuth();
   const toast = useToast()
+
+const isMounted = useRef(false);
+
+  useEffect(() => {
+    if (isMounted.current && error) {
+        toast({
+          title: 'Login error',
+          description: "Check your login or password.",
+          status: 'error',
+          duration: 3000,
+          isClosable: true,
+        })
+      }
+   }, [error, toast])
+
+  useEffect(() => {
+    isMounted.current = true
+  }, [])
+
 
 
   const handleSubmit = e => {
@@ -24,34 +41,22 @@ export const LoginForm = () => {
     form.reset();
   };
 
-
-  useEffect(() => {
-    if (error && isLoading) {
-      toast({
-              title: 'Error.',
-              description: "Check the correctness of the entered data.",
-              status: 'error',
-              duration: 4000,
-              isClosable: true,
-            })
-    }
-        }, [error]);
-
   return (
     <Flex p='8' justify='center' direction='column' align='center'>
-    <form onSubmit={handleSubmit} >
-      <FormControl pb='3'>
+      <form onSubmit={handleSubmit}>
+        <FormControl pb='3'>
           <FormLabel>Email</FormLabel>
           <Input placeholder='Email' type="email" name="email" />
-          </FormControl>
-      <FormControl pb='3'></FormControl>
-      <FormControl pb='3'>
+        </FormControl>
+        <FormControl pb='3'></FormControl>
+        <FormControl pb='3'>
           <FormLabel>Password</FormLabel>
           <Input placeholder='Password' type="password" name="password" />
-      </FormControl>
+        </FormControl>
 
         <Button type="submit">Log In</Button>
       </form>
-      </Flex>
+      {isLoading && <Spinner />}
+    </Flex>
   );
 };

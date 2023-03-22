@@ -4,7 +4,6 @@ import { getContacts } from 'redux/contacts/contacts-selector';
 import { getFilter } from 'redux/filter/filter-selector';
 import { Flex } from '@chakra-ui/react';
 
-
 export const ContactList = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
