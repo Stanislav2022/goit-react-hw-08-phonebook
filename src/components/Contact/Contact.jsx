@@ -14,7 +14,6 @@ export const Contact = ({ id, name, number}) => {
    }
 
   return (
-    <>
     <Flex p='1' justify='flex-start' w='300px'>
       <Avatar name={name} src='https://bit.ly/broken-link'/>
       <Box pl='3' pr='3'>
@@ -23,6 +22,5 @@ export const Contact = ({ id, name, number}) => {
         </Box>
       <IconButton ml='auto' onClick={handleDelete} aria-label='Search database' icon={<DeleteIcon />} />
     </Flex>
-    </>
   );
 };
