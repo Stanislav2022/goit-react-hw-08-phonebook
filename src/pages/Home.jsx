@@ -1,6 +1,6 @@
 const styles = {
   container: {
-    minHeight: 'calc(100vh - 50px)',
+    minHeight: 'calc(100vh - 300px)',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -17,8 +17,6 @@ export default function Home () {
     <div style={styles.container}>
       <h1 style={styles.title}>
         Hello. This is your personal contact book.
-        <span role="img" aria-label="Greeting icon">
-        </span>
       </h1>
     </div>
   );
